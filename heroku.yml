@@ -1,0 +1,4 @@
+// filepath: /home/bert/projetAI/projet9/Dashboard/heroku.yml
+build:
+  docker:
+    web: Dockerfile
