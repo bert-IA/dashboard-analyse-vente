@@ -1,7 +1,11 @@
 import streamlit as st
+import os
 from menu import show_menu
 from stats import show_stats
 from predictions import show_predictions
+
+# Utiliser le port fourni par Heroku
+port = int(os.environ.get("PORT", 8501))
 
 # CSS pour plus de visibilité sur le dashboard
 st.markdown("""
@@ -44,3 +48,7 @@ elif st.session_state.page == 'stats':
     show_stats()
 elif st.session_state.page == 'predictions':
     show_predictions()
+
+# Lancer l'application Streamlit
+if __name__ == "__main__":
+    st.run(port=port)
