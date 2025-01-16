@@ -152,7 +152,7 @@ Les résultats montrent que le modèle N-Beats dépasse le modèle SARIMAX en te
 
 **N-Beats deux mois** : RMSE 5.58
 
-![alt text](images/image6.png)  
+![alt text](images/image6.png)
 
 ### Conclusion
 
@@ -258,7 +258,6 @@ En conclusion, bien que le modèle N-Beats présente des capacités prometteuses
 - **Différentiation** : La différentiation est une technique utilisée pour rendre une série temporelle stationnaire en supprimant les tendances. Une série est dite stationnaire si ses propriétés statistiques, telles que la moyenne et la variance, sont constantes dans le temps. La différentiation consiste à soustraire la valeur précédente de la valeur actuelle de la série.
 
 ![alt text](images/image9.png)
-
 
 - **Différentiation** Saisonnière 112 jours : La différentiation saisonnière est utilisée pour traiter les patterns saisonniers récurrents dans les séries temporelles. Par exemple, pour une saisonnalité hebdomadaire, la différentiation saisonnière consisterait à soustraire la valeur de la série une semaine auparavant de la valeur actuelle.
 
