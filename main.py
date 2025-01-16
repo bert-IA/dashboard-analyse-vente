@@ -49,6 +49,3 @@ elif st.session_state.page == 'stats':
 elif st.session_state.page == 'predictions':
     show_predictions()
 
-# Lancer l'application Streamlit
-if __name__ == "__main__":
-    st.run(port=port)
