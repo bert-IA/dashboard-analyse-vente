@@ -79,6 +79,7 @@ Graphique linéaire montrant l'évolution des ventes quotidiennes sur la périod
 Analyse de la variance (ANOVA) pour déterminer si les ventes varient significativement en fonction du jour de la semaine afin de comprendre l'impact des jours de la semaine sur les ventes.
 
 **Résultat de l'ANOVA pour l'année 2013:**
+![alt text](images/image.png)
 
 - F-statistic: 9.62
 - P-value: 0.0000
@@ -94,6 +95,7 @@ Trois métriques adaptées aux séries chronologique on été suivis pour l’en
 - **Mean Absolute Percentage Error (MAPE)** : Le MAPE est la moyenne des erreurs absolues en pourcentage des valeurs réelles. Il mesure la précision de la prévision en termes relatifs, ce qui permet de comparer l'erreur de prédiction entre différentes séries temporelles ou différentes périodes. Le MAPE est particulièrement utile pour évaluer les performances de modèles de prévision lorsque les valeurs réelles varient considérablement. Cependant, il peut être biaisé par des valeurs réelles proches de zéro.
 
 #### c. Les données et la recherche des meilleures paramètres
+![alt text](images/image2.png)
 
 **Préprocessing pour entrainer le modèle SARIMAX**
 
@@ -136,6 +138,22 @@ Les performances des deux modèles ont été évaluées en termes de RMSE (Root 
 
 Les résultats montrent que le modèle N-Beats dépasse le modèle SARIMAX en termes de précision des prévisions, que ce soit pour les résultats sur un an ou sur deux mois mais très largement sur la période d’un an.
 
+**Sarimax un an** : RMSE 18.07
+
+![alt text](images/image3.png) 
+
+**N-Beats un an** :  RMSE 6.35
+
+![alt text](images/image4.png)
+
+**Sarimax deux mois** : RMSE 5.95
+
+![alt text](images/image5.png)
+
+**N-Beats deux mois** : RMSE 5.58
+
+![alt text](images/image6.png)  
+
 ### Conclusion
 
 Le modèle SARIMAX représente une solution classique et bien établie pour la prévision des séries temporelles, il présente cependant des limitations en termes de complexité de paramétrage et de performance sur cette série de données. En revanche, le modèle N-Beats, grâce à son implémentation efficace dans la bibliothèque Darts et à l'utilisation de GPU, offre des prévisions plus rapides qui se révèlent en outre plus précises avec moins de transformations des données. Ces résultats suggèrent que N-Beats est mieux adapté pour cette tâche de prévision des ventes.
@@ -155,9 +173,13 @@ L'intégration de ces covariables vise à fournir au modèle des informations co
 
 **Résultats**
 
-Le MAPE est passé de 23.08 à 21.18 ce qui représente une baisse de 8,2% du pourcentage d’erreur moyen.
+![alt text](images/image8.png)
+
+- MAPE passe de 23.08 à 21.18 ce qui représente une baisse de 8,2% du pourcentage d’erreur moyen.
 
 Si de plus on regroupe les prédictions par semaine ce qui peut correspondre à une période de livraison pour un magasin nous obtenons les résultats suivants :
+
+![alt text](images/image7.png)
 
 - MAPE : 7.8
 
@@ -181,7 +203,7 @@ Une des principales limites observées dans ce travail est que le modèle N-Beat
 
 De plus, une autre limite importante est que le modèle N-Beats a été utilisé pour la prévision sur une série univariée, alors que le magasin avait à l'origine 50 produits en vente. Il n'est peut-être pas raisonnable de répéter ce travail pour chaque produit individuellement. Une solution plus efficace pourrait consister à utiliser des modèles capables de traiter plusieurs séries temporelles simultanément, tels que les modèles multivariés. Une piste prometteuse serait d'envisager l'utilisation de N-Beats X, une extension de N-Beats conçue pour les séries temporelles multivariées. N-Beats X peut capturer les interactions entre les différents produits et fournir des prévisions plus cohérentes et précises. Il serait intéressant de vérifier notamment si les prédictions sont meilleures en entrainant un modèle sur tous les produits du magasin ou non.
 
-En conclusion, bien que le modèle N-Beats présente des capacités prometteuses, une meilleure compréhension et intégration des facteurs exogènes, ainsi que l'exploration de modèles capables de traiter plusieurs séries temporelles simultanément, comme N-Beats X, pourraient être envisager pour essayer d’améliorer ses performances. Des études futures pourraient se concentrer sur l'exploration de ces aspects pour tirer pleinement parti du potentiel du modèle.
+En conclusion, bien que le modèle N-Beats présente des capacités prometteuses, une meilleure compréhension et intégration des facteurs exogènes, ainsi que l'exploration de modèles capables de traiter plusieurs séries temporelles simultanément, comme N-Beats X, pourraient être envisager pour essayer d’améliorer ses performances. L'exploration de ces aspects pourraient être envisagée pour tirer pleinement parti du potentiel du modèle.
 
 ## Annexes
 
@@ -235,7 +257,11 @@ En conclusion, bien que le modèle N-Beats présente des capacités prometteuses
 
 - **Différentiation** : La différentiation est une technique utilisée pour rendre une série temporelle stationnaire en supprimant les tendances. Une série est dite stationnaire si ses propriétés statistiques, telles que la moyenne et la variance, sont constantes dans le temps. La différentiation consiste à soustraire la valeur précédente de la valeur actuelle de la série.
 
+![alt text](images/image9.png)
 
 
+- **Différentiation** Saisonnière 112 jours : La différentiation saisonnière est utilisée pour traiter les patterns saisonniers récurrents dans les séries temporelles. Par exemple, pour une saisonnalité hebdomadaire, la différentiation saisonnière consisterait à soustraire la valeur de la série une semaine auparavant de la valeur actuelle.
 
+![alt text](images/image10.png)
 
+**Remarque** : c'est cette différentation saisonière qui semble la plus proche de la série étudiée mais elle n'a pas pu être testée à cause d'un besoin en ressource trop important.
