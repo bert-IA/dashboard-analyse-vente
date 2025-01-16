@@ -12,4 +12,4 @@ RUN pip install --no-cache-dir -r requirements.txt
 EXPOSE 8501
 
 # Définir la commande pour exécuter l'application
-CMD ["streamlit", "run main.py --server.port=$PORT"]
+CMD ["sh", "-c", "streamlit run main.py --server.port=$PORT"]
